@@ -1,5 +1,6 @@
 alertmanager:
+  enabled: false
   ingress:
-    enabled: true
+    enabled: false
     hosts:
       - "*.test.com"
