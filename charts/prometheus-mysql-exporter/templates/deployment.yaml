@@ -82,6 +82,11 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.mysql.existingPasswordSecret.name }}
                   key: {{ .Values.mysql.existingPasswordSecret.key }}
+              - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.database.passwordSecret.secret }}
+                  key: {{ .Values.database.passwordSecret.key }}
           {{- end }}
 
           {{- end }}
