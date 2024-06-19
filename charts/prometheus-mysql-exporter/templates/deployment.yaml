@@ -75,6 +75,15 @@ spec:
                   name: {{ .Values.mysql.existingPasswordSecret.name }}
                   key: {{ .Values.mysql.existingPasswordSecret.key }}
           {{- end }}
+          {{- if and .Values.mysql.existingPasswordSecret.name .Values.mysql.existingPasswordSecret.key }}
+          env:
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.mysql.existingPasswordSecret.name }}
+                  key: {{ .Values.mysql.existingPasswordSecret.key }}
+          {{- end }}
+
           {{- end }}
           ports:
             - containerPort: {{ .Values.service.internalPort }}
